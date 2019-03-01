@@ -1,0 +1,18 @@
+// Initial setup, connect to eth/wifi -> 
+# sudo apt-get install modemmanager network-manager
+# nmcli con add type gsm con-name MODEM ifname ttyUSB0 apn internet 
+Connection 'MODEM' (ba3c4697-68ed-4adf-a441-54b47bc459ea) successfully added.
+# sudo nano /boot/config.txt
+    ADD dtoverlay=pi3-disable-wifi
+    ADD dtoverlay=pi3-disable-bt
+nebo proste:
+sudo sh -c "echo 'dtoverlay=pi3-disable-wifi' >> /boot/config.txt"
+sudo sh -c "echo 'dtoverlay=pi3-disable-bt' >> /boot/config.txt"
+//REBOOT
+#sudo reboot
+# nmcli dev status
+DEVICE   TYPE      STATE         CONNECTION   
+ttyUSB0 gsm connected MODEM      
+eth0     ethernet  connected     -- 
+lo  loopback    unmanaged   --
+// -> profit
